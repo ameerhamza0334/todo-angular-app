@@ -7,8 +7,10 @@ const app = express();
 app.use(express.static('./dist/todo-angular-app'));
 
 app.get('/*', (req, res) =>
-    res.sendFile('index.html', {root: 'dist/todo-angular-app/'}),
+  res.sendFile('index.html', { root: 'dist/todo-angular-app/' }),
 );
 
 // Start the app by listening on the default Heroku port
-app.listen(process.env.PORT || 8080);
+app.listen(8080, () => {
+  console.log('server is running on port 8080')
+});
