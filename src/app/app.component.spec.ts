@@ -1,31 +1,46 @@
-import { TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { By } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 
 describe('AppComponent', () => {
+  let component: AppComponent;
+  let fixture: ComponentFixture<AppComponent>;
+
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [
         AppComponent
       ],
     }).compileComponents();
-  });
-
-  it('should create the app', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app).toBeTruthy();
-  });
-
-  it(`should have as title 'todo-angular-app'`, () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app.title).toEqual('todo-angular-app');
-  });
-
-  it('should render title', () => {
-    const fixture = TestBed.createComponent(AppComponent);
+    fixture = TestBed.createComponent(AppComponent);
+    component = fixture.componentInstance;
     fixture.detectChanges();
-    const compiled = fixture.nativeElement;
-    expect(compiled.querySelector('.content span').textContent).toContain('todo-angular-app app is running!');
+
   });
+
+
+  it('should render todo UI', () => {
+    let rowFlex = fixture.debugElement.query(By.css('.flex-container-row'))
+    expect(rowFlex).toBeTruthy()
+    let divChildren = rowFlex.childNodes
+    expect(divChildren.length).toBe(2)
+
+    let todoInput = fixture.debugElement.query(By.css('input'));
+    expect(todoInput).toBeTruthy();
+
+    let todoButton = fixture.debugElement.query(By.css('button'));
+    expect(todoButton).toBeTruthy();
+    expect(todoButton.nativeElement.innerHTML).toBe('Add')
+
+    let todoList = fixture.debugElement.query(By.css('ul'));
+    expect(todoList).toBeTruthy();
+  })
+
+  it('should add todo item to list', () => {
+    let list = component.addItemtoTodo('pass acceptance test')
+    fixture.detectChanges()
+    expect(list).toBeDefined()
+    expect(list.length).toBeGreaterThan(0)
+  })
+
 });
