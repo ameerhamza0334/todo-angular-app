@@ -28,13 +28,18 @@ describe('TodoService', () => {
         createdAt: "2021-10-13T20:53:53.795Z",
         updatedAt: "2021-10-13T20:53:53.795Z"
       }
-      await http.post(`${(environment as any).testUrl}todo/`, expectedResult).toPromise().then((resp: any) => {
+      await http.post(`${(environment as any).testUrl}todo/`, expectedResult).toPromise().then(async (resp: any) => {
         expect(resp).toBeDefined()
         expect(resp['id']).not.toEqual("NaN")
         expect(resp).toEqual(expectedResult)
-        http.delete(`${(environment as any).testUrl}todo/`)
-      }).catch(err => {
-        expect(err).toThrowError('test fails due to exception')
+        await http.delete(`${(environment as any).testUrl}todo/${expectedResult.id}`).toPromise().then(resp => {
+          console.log('deleted todo')
+        })
+      }).catch(async (err) => {
+        await http.delete(`${(environment as any).testUrl}todo/${expectedResult.id}`).toPromise().then(resp => {
+          console.log('deleted todo')
+        })
+        expect(err).toBeUndefined()
       })
     })
 
@@ -52,6 +57,10 @@ describe('TodoService', () => {
   })
 
   it('should delete todo after adding', async () => {
-    await service.delete(addResp.id)
+    await service.delete(addResp.id).toPromise().then((resp: any) => {
+      expect(resp).toBeDefined()
+      expect(resp.message).toEqual('1 row deleted')
+    })
   })
+
 });

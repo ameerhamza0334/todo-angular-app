@@ -1,5 +1,9 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
-
+import { todoModel } from 'src/models/todoRequestModel';
+import { TodoService } from 'src/services/todo.service';
+import { NgxSpinnerService } from "ngx-spinner";
+import { Observable, of } from 'rxjs';
+import { map } from 'rxjs/operators';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -11,14 +15,23 @@ export class AppComponent {
   todoList: string[] = [];
   @ViewChild('todoInput') todoInput!: ElementRef
 
-  addItemtoTodo(inputItem: string): boolean {
+  constructor(private _todoService: TodoService, private spinner: NgxSpinnerService) { }
+
+  addItemtoTodo(inputItem: string): Observable<boolean> {
     if (inputItem && inputItem !== '') {
-      this.todoList.push(inputItem)
-      this.todoInput.nativeElement.value = ''
-      return true
+      let todoReqModel: todoModel = {
+        todo: inputItem
+      }
+      this.spinner.show()
+      return this._todoService.create(todoReqModel).pipe(map(resp => {
+        this.todoInput.nativeElement.value = ''
+        this.todoList.push(resp.todo)
+        return true
+      }))
     }
-    return false
+    return of(false)
   }
+
   getTodoList() {
     return this.todoList;
   }

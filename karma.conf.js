@@ -13,7 +13,12 @@ module.exports = function (config) {
       require('@angular-devkit/build-angular/plugins/karma')
     ],
     client: {
-      clearContext: false // leave Jasmine Spec Runner output visible in browser
+      clearContext: false, // leave Jasmine Spec Runner output visible in browser
+      jasmine: {
+        random: false, // disable the random running order
+        timeoutInterval: 10000
+      }
+
     },
     coverageReporter: {
       dir: require('path').join(__dirname, './coverage/todo-angular-app'),
@@ -30,6 +35,7 @@ module.exports = function (config) {
     autoWatch: true,
     browsers: ['Chrome'],
     singleRun: false,
-    restartOnFileChange: true
+    restartOnFileChange: true,
+
   });
 };

@@ -1,16 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
-
+import { HttpClientModule } from '@angular/common/http';
 describe('AppComponent', () => {
   let component: AppComponent;
   let fixture: ComponentFixture<AppComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
+      imports: [HttpClientModule],
       declarations: [
         AppComponent
       ],
+
     }).compileComponents();
     fixture = TestBed.createComponent(AppComponent);
     component = fixture.componentInstance;
@@ -36,16 +38,20 @@ describe('AppComponent', () => {
     expect(todoList).toBeTruthy();
   })
 
-  it('should add todo item to list', () => {
-    let isAdded = component.addItemtoTodo('pass acceptance test')
-    fixture.detectChanges()
-    expect(isAdded).toBeTrue()
+  it('should add todo item to list', async () => {
+    await component.addItemtoTodo('pass acceptance test').toPromise().then(resp => {
+      fixture.detectChanges()
+      expect(resp).toBeTrue()
+    })
   })
 
   it('should not proceed on empty input', async () => {
-    let isAdded = component.addItemtoTodo('')
-    fixture.detectChanges()
-    expect(isAdded).toBeFalse()
+    await component.addItemtoTodo('').toPromise().then(resp => {
+      fixture.detectChanges()
+      expect(resp).toBeFalse()
+    }
+    )
   })
+
 
 });
