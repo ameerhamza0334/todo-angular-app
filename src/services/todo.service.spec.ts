@@ -21,27 +21,27 @@ describe('TodoService', () => {
 
   describe('add todo', () => {
 
-    it('contract test at Frontend code', async () => {
-      const expectedResult = {
-        todo: "this is from postman again but from test",
-        id: "61674761e1b0f4b883e65490",
-        createdAt: "2021-10-13T20:53:53.795Z",
-        updatedAt: "2021-10-13T20:53:53.795Z"
-      }
-      await http.post(`${(environment as any).testUrl}todo/`, expectedResult).toPromise().then(async (resp: any) => {
-        expect(resp).toBeDefined()
-        expect(resp['id']).not.toEqual("NaN")
-        expect(resp).toEqual(expectedResult)
-        await http.delete(`${(environment as any).testUrl}todo/${expectedResult.id}`).toPromise().then(resp => {
-          console.log('deleted todo')
-        })
-      }).catch(async (err) => {
-        await http.delete(`${(environment as any).testUrl}todo/${expectedResult.id}`).toPromise().then(resp => {
-          console.log('deleted todo')
-        })
-        expect(err).toBeUndefined()
-      })
-    })
+    // it('contract test at Frontend code', async () => {
+    //   const expectedResult = {
+    //     todo: "this is from postman again but from test",
+    //     id: "61674761e1b0f4b883e65490",
+    //     createdAt: "2021-10-13T20:53:53.795Z",
+    //     updatedAt: "2021-10-13T20:53:53.795Z"
+    //   }
+    //   await http.post(`${(environment as any).testUrl}todo/`, expectedResult).toPromise().then(async (resp: any) => {
+    //     expect(resp).toBeDefined()
+    //     expect(resp['id']).not.toEqual("NaN")
+    //     expect(resp).toEqual(expectedResult)
+    //     await http.delete(`${(environment as any).testUrl}todo/${expectedResult.id}`).toPromise().then(resp => {
+    //       console.log('deleted todo')
+    //     })
+    //   }).catch(async (err) => {
+    //     await http.delete(`${(environment as any).testUrl}todo/${expectedResult.id}`).toPromise().then(resp => {
+    //       console.log('deleted todo')
+    //     })
+    //     expect(err).toBeUndefined()
+    //   })
+    // })
 
     it('should add todo using API call', async () => {
       const mockBody = {
