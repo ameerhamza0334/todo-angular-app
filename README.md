@@ -1,6 +1,12 @@
-# TodoAngularApp
+# Todo FrontEnd
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.0.0-rc.1.
+This Project Structure is built upon TDD principles having acceptance tests before UI development and then API testing before API implementation.
+
+Project Structure consists of: 
+- src/app : It contains the main code base of the project There is currently only one component due to the nature of the project.
+- src/models: This project contains all the data models that has been used as Typescript allows us to harness full potential of the Object Oriented Programming so, it's a good habit to handle data I/O through Models.
+- src/services: All the communication with the backend API's are being done here. So, by injecting our services inside the components we are communicating with the backend API to Add Todo in to the database
+- All the tests regarding front end and services are written in there repective 'spec' file which is created by the angular CLI whenever we create any new component/service.
 
 ## Development server
 
