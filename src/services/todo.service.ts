@@ -14,11 +14,12 @@ export class TodoService {
   private BASE_URL = environment.apiUrl
   constructor(private _httpService: HttpClient) { }
 
-  create(requestModel: todoModel | listItem): Observable<listItem> {
+  create(requestModel: todoModel ): Observable<listItem> {
     return this._httpService.post(`${this.BASE_URL}todo/`, requestModel).pipe(
       map((data: any) => {
-        console.log(data)
-        return data.hasOwnProperty('id') ? data : data.data
+        data.data.id = data.data._id
+        delete data.data._id
+        return data.data
       })
     )
   }

@@ -5,7 +5,7 @@
     "ng": "ng",
     "start": "node server.js",
     "build": "ng build",
-    "test": "ng test",
+    "test": "ng test --watch=false --browsers ChromeHeadless",
     "lint": "ng lint",
     "e2e": "ng e2e",
     "api": "json-server --watch api/db.json",
@@ -31,10 +31,10 @@
     "@angular/platform-browser": "~11.0.0-rc.1",
     "@angular/platform-browser-dynamic": "~11.0.0-rc.1",
     "@angular/router": "~11.0.0-rc.1",
-    "@pact-foundation/pact": "^9.16.4",
+    "intl": "^1.2.5",
     "json-server": "^0.17.0",
     "net": "^1.0.2",
-    "ngx-pact": "^1.1.0",
+    "ngx-spinner": "^11.0.2",
     "path": "^0.12.7",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",
@@ -56,12 +56,11 @@
     "karma-coverage": "~2.0.3",
     "karma-jasmine": "~4.0.0",
     "karma-jasmine-html-reporter": "^1.5.0",
+    "karma-phantomjs-launcher": "^1.0.4",
     "projectz": "^2.22.0",
     "protractor": "~7.0.0",
     "ts-node": "~8.3.0",
     "tslint": "~6.1.0",
-    "typescript": "~4.0.2",
-    "@pact-foundation/pact": "^9.14.0",
-    "@pact-foundation/pact-node": "^10.11.1"
+    "typescript": "~4.0.2"
   }
 }
