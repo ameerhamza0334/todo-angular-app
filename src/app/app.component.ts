@@ -11,12 +11,14 @@ export class AppComponent {
   todoList: string[] = [];
   @ViewChild('todoInput') todoInput!: ElementRef
 
-  addItemtoTodo(inputItem: string) {
-    this.todoList.push(inputItem)
-    this.todoInput.nativeElement.value = ''
-    return this.todoList
+  addItemtoTodo(inputItem: string): boolean {
+    if (inputItem && inputItem !== '') {
+      this.todoList.push(inputItem)
+      this.todoInput.nativeElement.value = ''
+      return true
+    }
+    return false
   }
-
   getTodoList() {
     return this.todoList;
   }

@@ -1,8 +1,7 @@
-export class listItem {
-  id: number
-  item: string
-  constructor() {
-    this.id = 0
-    this.item = ''
-  }
+export interface listItem {
+  todo: string
+  id: string
+  createdAt: string
+  updatedAt: string
+
 }

@@ -4,8 +4,9 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'https://todo-app-node-ameer.herokuapp.com/api/',
-  environmentName: 'local'
+  testUrl: 'http://localhost:3000/',
+  environmentName: 'local',
+  apiUrl: 'https://todo-app-node-ameer.herokuapp.com/api/'
 };
 
 /*

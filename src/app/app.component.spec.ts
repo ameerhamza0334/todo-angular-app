@@ -37,10 +37,15 @@ describe('AppComponent', () => {
   })
 
   it('should add todo item to list', () => {
-    let list = component.addItemtoTodo('pass acceptance test')
+    let isAdded = component.addItemtoTodo('pass acceptance test')
     fixture.detectChanges()
-    expect(list).toBeDefined()
-    expect(list.length).toBeGreaterThan(0)
+    expect(isAdded).toBeTrue()
+  })
+
+  it('should not proceed on empty input', async () => {
+    let isAdded = component.addItemtoTodo('')
+    fixture.detectChanges()
+    expect(isAdded).toBeFalse()
   })
 
 });
