@@ -8,6 +8,9 @@ Project Structure consists of:
 - src/services: All the communication with the backend API's are being done here. So, by injecting our services inside the components we are communicating with the backend API to Add Todo in to the database
 - All the tests regarding front end and services are written in there repective 'spec' file which is created by the angular CLI whenever we create any new component/service.
 
+## Live Project
+https://todo-app-ameer.herokuapp.com/
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
