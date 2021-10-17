@@ -24,4 +24,4 @@ jobs:
       env:
         CI: true
     - run: npm install
-    - run: npm run api && npm test
+    - run: npm test
