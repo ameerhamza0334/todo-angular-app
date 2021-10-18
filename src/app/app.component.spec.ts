@@ -39,14 +39,14 @@ describe('AppComponent', () => {
   })
 
   it('should add todo item to list', async () => {
-    await component.addItemtoTodo('pass acceptance test').toPromise().then(resp => {
+    await component.addItemtoTodo('pass acceptance test').then(resp => {
       fixture.detectChanges()
       expect(resp).toBeTrue()
     })
   })
 
   it('should not proceed on empty input', async () => {
-    await component.addItemtoTodo('').toPromise().then(resp => {
+    await component.addItemtoTodo('').then(resp => {
       fixture.detectChanges()
       expect(resp).toBeFalse()
     }
