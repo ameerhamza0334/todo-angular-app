@@ -17,18 +17,18 @@ export class AppComponent {
 
   constructor(private _todoService: TodoService) { }
 
-  addItemtoTodo(inputItem: string): Observable<boolean> {
+  async addItemtoTodo(inputItem: string): Promise<boolean> {
     if (inputItem && inputItem !== '') {
       let todoReqModel: todoModel = {
         todo: inputItem
       }
-      return this._todoService.create(todoReqModel).pipe(map(resp => {
-        this.todoInput.nativeElement.value = ''
-        this.todoList.push(resp.todo)
-        return true
-      }))
+
+      let resp = await this._todoService.create(todoReqModel).toPromise()
+      this.todoInput.nativeElement.value = ''
+      this.todoList.push(resp.todo)
+      return true
     }
-    return of(false)
+    return false
   }
 
   getTodoList() {
