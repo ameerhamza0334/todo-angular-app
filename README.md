@@ -8,16 +8,17 @@ Project Structure consists of:
 - src/services: All the communication with the backend API's are being done here. So, by injecting our services inside the components we are communicating with the backend API to Add Todo in to the database
 - All the tests regarding front end and services are written in there repective 'spec' file which is created by the angular CLI whenever we create any new component/service.
 
+## Continous Integration/ Continous Deployment 
+
+Travis CI has been implemented in this project to carry out integration tasks and after successful integration, build is dockerized and is deployed to Heroku server
+
 ## Live Project
+
 https://todo-app-ameer.herokuapp.com/
 
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
 ## Build
 
