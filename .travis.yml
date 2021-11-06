@@ -1,0 +1,35 @@
+sudo: required
+dist: trusty
+language: node_js
+node_js:
+  - "7.7.4"
+
+services:
+  - docker
+
+apt:
+  sources:
+    - google-chrome
+  packages:
+    - google-chrome-stable
+
+before_install:
+  - export CHROME_BIN=chromium-browser
+  - export DISPLAY=:99.0
+  - sh -e /etc/init.d/xvfb start
+
+before_script:
+  - npm install
+
+script:
+  - npm run test -- --watch=false
+  - npm run e2e
+
+after_success:
+  - if [ "$TRAVIS_BRANCH" == "master" ]; then
+    npm run build;
+    docker build -t todo-angular-app .;
+    docker tag todo-angular-app todo-angular-app:$(git rev-parse --short HEAD);
+    docker login -u="$docker_user" -p="$docker_pass";
+    docker push todo-angular-app;
+    fi
