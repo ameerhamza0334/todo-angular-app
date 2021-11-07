@@ -19,7 +19,6 @@ apt:
 
 before_script:
   - npm install
-  - sudo apt install -y make python build-essential
 
 script:
   - ng test
