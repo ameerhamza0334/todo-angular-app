@@ -22,12 +22,12 @@ before_script:
   - npm install
 
 script:
-  - npm run test -- --watch=false
-  - npm run e2e
+  - ng test
+  - ng e2e
 
 after_success:
   - if [ "$TRAVIS_BRANCH" == "master" ]; then
-    npm run build;
+    ng build --prod;
     docker build -t todo-angular-app .;
     docker tag todo-angular-app todo-angular-app:$(git rev-parse --short HEAD);
     docker login -u="$docker_user" -p="$docker_pass";
