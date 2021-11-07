@@ -19,6 +19,7 @@ apt:
 
 before_script:
   - npm install
+  - sudo apt install -y make python build-essential
 
 script:
   - ng test
@@ -27,9 +28,8 @@ script:
 after_success:
   - if [ "$TRAVIS_BRANCH" == "master" ]; then
     ng build --prod;
-    docker build -t todo-angular-app .;
-    docker tag todo-angular-app todo-angular-app:$(git rev-parse --short HEAD);
-    docker login -u="$docker_user" -p="$docker_pass";
-    docker push todo-angular-app;
+    docker login -u _ -p $heroku_key registry.heroku.com;
+    docker build -t registry.heroku.com/todo-angular-app/web .;
+    docker push registry.heroku.com/todo-angular-app/web;
     fi
 
