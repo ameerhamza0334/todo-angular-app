@@ -8,7 +8,6 @@ services:
   - docker
 
 addons:
-
   chrome: stable
 
 apt:
@@ -17,7 +16,7 @@ apt:
   packages:
     - dpkg
     - google-chrome-stable
-    
+
 before_script:
   - npm install
 
@@ -33,3 +32,4 @@ after_success:
     docker login -u="$docker_user" -p="$docker_pass";
     docker push todo-angular-app;
     fi
+
