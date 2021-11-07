@@ -1,14 +1,24 @@
-# TodoAngularApp
+# Todo FrontEnd
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.0.0-rc.1.
+This Project Structure is built upon TDD principles having acceptance tests before UI development and then API testing before API implementation.
+
+Project Structure consists of: 
+- src/app : It contains the main code base of the project There is currently only one component due to the nature of the project.
+- src/models: This project contains all the data models that has been used as Typescript allows us to harness full potential of the Object Oriented Programming so, it's a good habit to handle data I/O through Models.
+- src/services: All the communication with the backend API's are being done here. So, by injecting our services inside the components we are communicating with the backend API to Add Todo in to the database
+- All the tests regarding front end and services are written in there repective 'spec' file which is created by the angular CLI whenever we create any new component/service.
+
+## Continous Integration/ Continous Deployment 
+
+Travis CI has been implemented in this project to carry out integration tasks and after successful integration, build is dockerized and is deployed to Heroku server
+
+## Live Project
+
+https://todo-app-ameer.herokuapp.com/
 
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
 ## Build
 
