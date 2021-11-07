@@ -26,7 +26,6 @@ script:
 
 after_success:
   - if [ "$TRAVIS_BRANCH" == "master" ]; then
-    ng build --prod;
     docker login -u _ -p $heroku_key registry.heroku.com;
     docker build -t registry.heroku.com/todo-app-ameer/web .;
     docker push registry.heroku.com/todo-app-ameer/web;
