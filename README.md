@@ -2,11 +2,13 @@
 
 This Project Structure is built upon TDD principles having acceptance tests before UI development and then API testing before API implementation.
 
+It's a basic todo applicaiton where a user can keep track of his/her todo tasks for the day, the design is minimalistic and only consist of a entry field where user can enter his task and it will be saved in the database and will appear on the list below.
+
 Project Structure consists of: 
 - src/app : It contains the main code base of the project There is currently only one component due to the nature of the project.
 - src/models: This project contains all the data models that has been used as Typescript allows us to harness full potential of the Object Oriented Programming so, it's a good habit to handle data I/O through Models.
 - src/services: All the communication with the backend API's are being done here. So, by injecting our services inside the components we are communicating with the backend API to Add Todo in to the database
-- All the tests regarding front end and services are written in there repective 'spec' file which is created by the angular CLI whenever we create any new component/service.
+- All the unit/integration tests regarding front end and services are written in there repective 'spec' file which is created by the angular CLI whenever we create any new component/service.
 
 ## Continous Integration/ Continous Deployment 
 
